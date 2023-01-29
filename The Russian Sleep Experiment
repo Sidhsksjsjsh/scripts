@@ -1,0 +1,69 @@
+local Character = game.Players.LocalPlayer.Character
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("The Russian Sleep Experiment", "DarkTheme")
+
+--Tabs
+local Main = Window:NewTab("Main")
+local Teleport = Window:NewTab("Teleports")
+
+--Sections
+local MainSection = Main:NewSection("Main")
+local TeleportSection = Teleport:NewSection("Teleports")
+
+MainSection:NewButton("Respawn", "You respawn when press this", function()
+game:GetService("ReplicatedStorage").sh2:FireServer()
+end)
+
+MainSection:NewButton("Bring all subjects (EQUIP CUFFS)", "Brings all the subjects in the game", function()
+    for i,v in pairs(game.Workspace.Rooms:GetDescendants()) do
+    if v:IsA("Model") then
+     if v.Parent.Name == "Human" then
+        local Subject = v
+        
+        --Cuffs
+        local args = {
+        [1] = "Cuff",
+        [2] = Subject.HumanoidRootPart}
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild("Detain Cuffs").RemoteEvent:FireServer(unpack(args))
+        wait(0.5)
+        
+        --Uncuffs
+        local args = {
+        [1] = "UnCuff",
+        [2] = Subject.HumanoidRootPart}
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild("Detain Cuffs").RemoteEvent:FireServer(unpack(args))
+            end
+        end
+    end
+end)
+
+MainSection:NewButton("Annoy server", "Annoys the fuck out of the server!", function()
+    while wait(0.1) do
+for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v:IsA("ClickDetector") then
+        fireclickdetector(v)
+            end
+        end
+    end
+end)
+
+--Teleports
+TeleportSection:NewButton("Break Room", "Teleport to break room", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-98.5587006, 4.00000238, 205.932281, 0.0343985818, 5.75625521e-08, 0.999408185, -5.77208823e-08, 1, -5.56099451e-08, -0.999408185, -5.57738176e-08, 0.0343985818)
+end)
+
+TeleportSection:NewButton("Research Lab", "Teleport to research lab", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21.8457108, 4.099998, 228.15097, -0.990294218, 2.58553587e-08, -0.138986915, 2.6555993e-08, 1, -3.18654414e-09, 0.138986915, -6.84655177e-09, -0.990294218)
+end)
+
+TeleportSection:NewButton("Virus Block", "Teleport to virus block", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-27.2172375, 4.09994745, 204.386887, 0.0266731121, -3.80360987e-08, -0.99964422, 4.09817069e-08, 1, -3.69561377e-08, 0.99964422, -3.99813906e-08, 0.0266731121)
+end)
+
+TeleportSection:NewButton("Virus Storage", "Teleport to virus storage", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-84.5999985, 4.00000381, 230.978607, -0.998835325, 4.57153035e-08, -0.0482488275, 4.71601567e-08, 1, -2.88075164e-08, 0.0482488275, -3.10493888e-08, -0.998835325)
+end)
+
+TeleportSection:NewButton("Center", "Teleport to center", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-54.0430717, 4.10008907, 204.86235, -0.00495845173, -1.08529106e-08, -0.999987721, 1.3860193e-09, 1, -1.08599165e-08, 0.999987721, -1.43985068e-09, -0.00495845173)
+end)
