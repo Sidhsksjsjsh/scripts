@@ -1,0 +1,140 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Monkey Tycoon 🐒", "DarkTheme")
+
+--Tabs
+local AutofarmTab = Window:NewTab("Autofarm")
+local PlayerTab = Window:NewTab("Player")
+
+--Sections
+local AutofarmSection = AutofarmTab:NewSection("Autofarm")
+local PlayerSection = PlayerTab:NewSection("Player")
+
+--Autofarm contents
+AutofarmSection:NewToggle("Auto buy monkeys", "Automatically buys monkeys", function(state)
+    if state then
+        local BuyMonkeyLoop = true
+
+        while BuyMonkeyLoop == true do
+            wait(0.1)
+            local ohNumber1 = 1
+            game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuyDropper:FireServer(ohNumber1)
+        end
+    else
+        local BuyMonkeyLoop = false
+    end
+end)
+AutofarmSection:NewToggle("Auto deposit", "Automatically deposits bananas", function(state)
+    if state then
+        while wait() do
+            game:GetService("ReplicatedStorage").GTycoonClient.Remotes.DepositDrops:FireServer()
+        end
+    else
+        print("Toggle Off")
+    end
+end)
+AutofarmSection:NewToggle("Auto grab bananas", "Automatically grabs bananas", function(state)
+    if state then
+        while wait() do
+            local ohNumber1 = 1
+            game:GetService("ReplicatedStorage").GTycoonClient.Remotes.GrabDrops:FireServer(ohNumber1)
+        end
+    else
+        print("Toggle Off")
+    end
+end)
+AutofarmSection:NewToggle("Auto upgrade launcher", "Automatically upgrades launcher", function(state)
+    if state then
+        while wait() do
+            local ohNumber1 = 1
+            game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuySpeed:FireServer(ohNumber1)
+        end
+    else
+        print("Toggle Off")
+    end
+end)
+AutofarmSection:NewToggle("Auto merge monkeys", "Automatically merges monkeys", function(state)
+    if state then
+        while wait() do
+            game:GetService("ReplicatedStorage").GTycoonClient.Remotes.MergeDroppers:FireServer()
+        end
+    else
+        print("Toggle Off")
+    end
+end)
+
+
+--Player contents
+PlayerSection:NewSlider("Speed", "SliderInfo", 200, 16, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("Hip height", "SliderInfo", 50, 2, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+PlayerSection:NewButton("Ctrl-Click TP", "Press ctrl and click at the same time to teleport on your mouse location", function()
+    -- Ctrl-Click TP
+    -- Useful for getting around, pretending to be sans, etc
+
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end)
+PlayerSection:NewButton("Btools", "Gives you toggleable btools", function()
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+
+    -- Objects
+
+    local ScreenGui = Instance.new("ScreenGui")
+    local TextButton = Instance.new("TextButton")
+    local On = Instance.new("StringValue")
+
+    -- Properties
+
+    ScreenGui.Parent = player.PlayerGui
+
+    TextButton.Parent = ScreenGui
+    TextButton.BackgroundColor3 = Color3.new(0.784314, 0.784314, 0.784314)
+    TextButton.BorderSizePixel = 0
+    TextButton.Position = UDim2.new(0, 0, 0.455743879, 0)
+    TextButton.Size = UDim2.new(0, 186, 0, 35)
+    TextButton.Font = Enum.Font.SourceSans
+    TextButton.Text = "Btools (Off)"
+    TextButton.TextColor3 = Color3.new(0.27451, 0.27451, 0.27451)
+    TextButton.TextScaled = true
+    TextButton.TextSize = 14
+    TextButton.TextWrapped = true
+
+
+    On.Parent = TextButton
+    On.Value = "Off"
+
+    -- Scripts
+
+    TextButton.MouseButton1Up:Connect(function()
+        if On.Value == "Off" then
+            On.Value = "On"
+            TextButton.Text = "Btools (On)"
+        else
+            On.Value = "Off"
+            TextButton.Text = "Btools (Off)"
+        end
+    end)
+
+    mouse.Button1Up:Connect(function()
+        if On.Value == "Off" then
+            print('btools off')
+        else
+            if mouse.Target.Locked == true then
+                mouse.Target:Destroy()
+            else
+                mouse.Target:Destroy()
+            end
+        end
+    end)
+end)
