@@ -1,0 +1,116 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("🍔 Fat Simulator", "Ocean")
+
+--Variables
+FarmEnergy = true
+RepTool = true
+WalkspeedEnabled = true
+
+
+--Functions
+function AutoFarmEnergy()
+    FarmEnergy = true
+    while wait(0.1) do
+        for i,v in pairs(game.Workspace:GetDescendants()) do
+            if v:IsA("TouchTransmitter") and v.Parent.Name == "Outer" and FarmEnergy == true then
+
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+            end
+        end
+    end
+end
+function AutoRepTool()
+    RepTool = true
+
+    if RepTool == true then
+        local Tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        while wait(0.1) do
+            print(Tool)
+            Tool:activate()
+        end
+    end
+end
+
+function TPSafeZone()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-97.4728165, 246.482208, 533.90448, -0.0201289896, 7.88056269e-08, 0.999797404, 8.13044494e-08, 1, -7.71846871e-08, -0.999797404, 7.97343276e-08, -0.0201289896)
+end
+function TPArea1()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(448.857025, 246.471268, 392.130219, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end
+function TPArea2()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-25.900486, 246.47226, -566.965454, 0.99999845, -1.06877396e-09, -0.00174725649, 9.94508365e-10, 1, -4.2505004e-08, 0.00174725649, 4.25032027e-08, 0.99999845)
+end
+
+function EnableClickTP()
+    -- Ctrl-Click TP
+    -- Useful for getting around, pretending to be sans, etc
+
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end
+function WalkspeedIncrease()
+    while WalkspeedEnabled == true do
+        wait()
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
+    end
+end
+--Tabs
+local AutofarmTab = Window:NewTab("Autofarm")
+local TeleportTab = Window:NewTab("Teleports")
+local PlayerTab = Window:NewTab("Player")
+
+--Sections
+local AutofarmSection = AutofarmTab:NewSection("Autofarm")
+local TeleportSection = TeleportTab:NewSection("Teleports")
+local PlayerSection = PlayerTab:NewSection("Player")
+
+--Autofarm contents
+AutofarmSection:NewToggle("Auto collect energy", "Collects energy", function(state)
+    if state then
+        AutoFarmEnergy()
+    else
+        FarmEnergy = false
+    end
+end)
+AutofarmSection:NewToggle("Auto equipped tool", "Auto reps your equipped tool", function(state)
+    if state then
+        AutoRepTool()
+    else
+        game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+        RepTool = false
+    end
+end)
+
+--Teleport contents
+TeleportSection:NewButton("Safe Zone", "Teleports you to the safe zone", function()
+    TPSafeZone()
+end)
+TeleportSection:NewButton("Area 1", "Teleports you to area 1", function()
+    TPArea1()
+end)
+TeleportSection:NewButton("Area 2", "Teleports you to area 2", function()
+    TPArea2()
+end)
+
+--Player contents
+PlayerSection:NewButton("Ctrl-Click TP", "Enables Ctrl-Click TP", function()
+    EnableClickTP()
+end)
+PlayerSection:NewToggle("WalkSpeed", "Increases your WalkSpeed", function(state)
+    if state then
+        WalkspeedEnabled = true
+        WalkspeedIncrease()
+    else
+        WalkspeedEnabled = false
+    end
+end)
+
+PlayerSection:NewSlider("Hip height", "SliderInfo", 500, 5, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
