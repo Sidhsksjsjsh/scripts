@@ -431,10 +431,16 @@ local PlayerSection = PlayerTab:NewSection("Player")
 USPSection:NewButton("Grab USP", "Grabs the USP", function()
     GrabPistol()
 end)
+USPSection:NewButton("Infinite USP ammo", "Gives infinite USP ammo", function()
+    InfinitePistolAmmo()
+end)
 
 --AK contents
 AKSection:NewButton("Grab AK", "Grabs the AK", function()
     GrabAK()
+end)
+AKSection:NewButton("Infinite AK ammo", "Gives infinite Ak ammo", function()
+    InfiniteAKAmmo()
 end)
 
 --Misc contents
