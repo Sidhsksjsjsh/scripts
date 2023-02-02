@@ -221,6 +221,45 @@ function AKFirerate()
 end
 
 --MISC
+
+function InjectVirus()
+    for i,v in pairs(game.Workspace.Rooms:GetDescendants()) do
+        if v.Parent.Name == "Human" then
+            if tostring(v.Parent.Parent.Owner.Value) == game.Players.LocalPlayer.Name then
+                local Human = v
+                local TPback = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                wait(0.1)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21.5400715, 4.00000238, 206.451218, -0.199107915, 8.71226258e-10, -0.979977548, 5.94349148e-09, 1, -3.18548077e-10, 0.979977548, -5.88791371e-09, -0.199107915)
+                wait(0.3)
+                fireproximityprompt(game:GetService("Workspace").Viruses.random.rand.ProximityPrompt, 1)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Human.HumanoidRootPart.CFrame * CFrame.new(0,0,3.5)
+                wait(0.2)
+
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Needlegun") then
+                    game.Players.LocalPlayer.Backpack.Needlegun.Parent = game.Players.LocalPlayer.Character
+                    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    tool:Activate()
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+                else
+                    local tool = game.Players.LocalPlayer.HumanoidRootPart.Character:FindFirstChildOfClass("Tool")
+                    tool:Activate()
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.CFrame = TPBack
+                end
+            end
+        end
+    end
+end
+
+function GetCoffee()
+    local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-88.9132233, 4.00000334, 196.408691, 0.998212218, -1.82899136e-08, -0.0597692318, 1.25383002e-08, 1, -9.66053548e-08, 0.0597692318, 9.56832409e-08, 0.998212218)
+    game.Players.LocalPlayer.Backpack.Mug.Parent = game.Players.LocalPlayer.Character
+    fireclickdetector(game:GetService("Workspace").CoffeMachine.Button2.ClickDetector)
+    wait(5)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+end
 function AnnoyTheServer()
     AnnoyServer = true
     while AnnoyServer == true do
@@ -236,22 +275,22 @@ function Respawn()
     game:GetService("ReplicatedStorage").sh2:FireServer()
 end
 function FireTouchInterests()
-for i,v in pairs(game.Workspace:GetDescendants()) do
-if v:IsA("TouchTransmitter") then
-firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
-wait()
-firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v:IsA("TouchTransmitter") then
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+        end
     end
-end                       
 end
 function FireProximityPrompts()
     for i,v in pairs(game.Workspace:GetDescendants()) do
-if v.Name == "ProximityPrompt" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
-wait(0.2)
-fireproximityprompt(v, 1)
+        if v.Name == "ProximityPrompt" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+            wait(0.2)
+            fireproximityprompt(v, 1)
+        end
     end
-end
 end
 
 --TELEPORT
@@ -423,6 +462,7 @@ local PlayerTab = Window:NewTab("Player")
 local USPSection = GunModTab:NewSection("USP (UNEQUIP GUN BEFORE USING BUTTONS)")
 local AKSection = GunModTab:NewSection("AK47 (UNEQUIP GUN BEFORE USING BUTTONS)")
 local MiscSection = MiscTab:NewSection("Misc")
+local FiringSection = MiscTab:NewSection("Firing stuff")
 local TeleportSection = TeleportTab:NewSection("Teleports")
 local VisualSection = VisualTab:NewSection("Visuals")
 local PlayerSection = PlayerTab:NewSection("Player")
@@ -431,27 +471,41 @@ local PlayerSection = PlayerTab:NewSection("Player")
 USPSection:NewButton("Grab USP", "Grabs the USP", function()
     GrabPistol()
 end)
+USPSection:NewButton("Infinite USP ammo", "Gives infinite USP ammo", function()
+    InfinitePistolAmmo()
+end)
 
 --AK contents
 AKSection:NewButton("Grab AK", "Grabs the AK", function()
     GrabAK()
 end)
+AKSection:NewButton("Infinite AK ammo", "Gives infinite Ak ammo", function()
+    InfiniteAKAmmo()
+end)
 
 --Misc contents
+MiscSection:NewButton("inject human (NEED SPAWNED HUMAN)", "injects your human with a virus", function()
+    InjectVirus()
+end)
+MiscSection:NewButton("Get some coffee", "get some coffee :)", function()
+    GetCoffee()
+end)
 MiscSection:NewButton("Respawn", "You respawn when press this", function()
     Respawn()
 end)
-MiscSection:NewToggle("Annoy Server (FIRES CLICK DETECTORS)", "Annoys the fuck out of the server!", function(state)
+
+--Firing
+FiringSection:NewToggle("Annoy Server (FIRES CLICK DETECTORS)", "Annoys the fuck out of the server!", function(state)
     if state then
         AnnoyTheServer()
     else
         AnnoyServer = false
     end
 end)
-MiscSection:NewButton("Fire touch interests", "Fires all touch interests", function()
+FiringSection:NewButton("Fire touch interests", "Fires all touch interests", function()
     FireTouchInterests()
 end)
-MiscSection:NewButton("Fire proximity prompts", "Fires all proximity prompts", function()
+FiringSection:NewButton("Fire proximity prompts", "Fires all proximity prompts", function()
     FireProximityPrompts()
 end)
 
@@ -487,6 +541,9 @@ PlayerSection:NewButton("Ctrl-Click TP", "Enables Ctrl-Click TP", function()
 end)
 PlayerSection:NewSlider("WalkSpeed", "SliderInfo", 200, 16, function(s) -- 200 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("Hip Height", "SliderInfo", 10, 0, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
 end)
 
 --Visual contents
