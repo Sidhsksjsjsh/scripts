@@ -1,1 +1,555 @@
-fixing
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Russian Sleep Experiment V.2", "Ocean")
+
+--Variables
+AnnoyServer = true
+
+--Functions
+
+--USP
+function GrabPistol()
+    local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-73.0798798, 4.00000143, 194.679001, 0.99797523, 5.46001324e-08, 0.0636041835, -5.68417136e-08, 1, 3.34331318e-08, -0.0636041835, -3.69808077e-08, 0.99797523)
+    wait(0.5)
+    fireproximityprompt(game:GetService("Workspace").IgnoreParts.Characters.TaskUniforms.USP.ProxPart.ProximityPrompt, 1)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+end
+function EnableFriendlyFire()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.USP.GunClient
+    local closureName = "Unnamed function"
+    local upvalueIndex = 5
+    local closureConstants = {
+        [1] = "TouchEnabled",
+        [2] = "UserInputType",
+        [3] = "Enum",
+        [4] = "Keyboard",
+        [5] = Enum.UserInputType.Keyboard,
+        [6] = "Gamepad1"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = true
+    local elementIndex = "FriendlyFire"
+
+
+    -- DO NOT RELY ON THIS FEATURE TO PRODUCE 100% FUNCTIONAL SCRIPTS
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function InstantKillBullets()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.USP.GunClient
+    local closureName = "Fire"
+    local upvalueIndex = 1
+    local closureConstants = {
+        [1] = "AimAnimationsEnabled",
+        [2] = "AimDown",
+        [3] = "Play",
+        [4] = "MinigunRevUpAnim",
+        [5] = "IsPlaying",
+        [6] = "Stop"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = 10000000000000
+    local elementIndex = "BaseDamage"
+
+
+    -- DO NOT RELY ON THIS FEATURE TO PRODUCE 100% FUNCTIONAL SCRIPTS
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function DisableRecoil()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.USP.GunClient
+    local closureName = "EjectShell"
+    local upvalueIndex = 1
+    local closureConstants = {
+        [1] = "ChargeAlterTable",
+        [2] = "BulletShellEnabled",
+        [3] = "ChargedShotAdvanceEnabled",
+        [4] = "ChargeLevel",
+        [5] = 1,
+        [6] = "Level1"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = false
+    local elementIndex = "CameraRecoilingEnabled"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function InfinitePistolAmmo()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.USP.GunClient
+    local closureName = "Fire"
+    local upvalueIndex = 10
+    local closureConstants = {
+        [1] = "AimAnimationsEnabled",
+        [2] = "AimDown",
+        [3] = "Play",
+        [4] = "MinigunRevUpAnim",
+        [5] = "IsPlaying",
+        [6] = "Stop"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = 100000000000000000000
+    local elementIndex = "Mag"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+
+--AK
+function GrabAK()
+    local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-79.3123016, 4.00000477, 194.95578, 0.999774814, -2.65878661e-08, 0.0212214403, 2.54896726e-08, 1, 5.20196721e-08, -0.0212214403, -5.14670297e-08, 0.999774814)
+    wait(0.5)
+    fireproximityprompt(game:GetService("Workspace").IgnoreParts.Characters.TaskUniforms.Part.ProximityPrompt, 1)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+end
+function EnableFriendlyFireAK()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.AK.GunClient
+    local closureName = "Unnamed function"
+    local upvalueIndex = 5
+    local closureConstants = {
+        [1] = "TouchEnabled",
+        [2] = "UserInputType",
+        [3] = "Enum",
+        [4] = "Keyboard",
+        [5] = Enum.UserInputType.Keyboard,
+        [6] = "Gamepad1"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = true
+    local elementIndex = "FriendlyFire"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function InstantKillBulletsAK()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.AK.GunClient
+    local closureName = "Fire"
+    local upvalueIndex = 1
+    local closureConstants = {
+        [1] = "AimAnimationsEnabled",
+        [2] = "AimDown",
+        [3] = "Play",
+        [4] = "MinigunRevUpAnim",
+        [5] = "IsPlaying",
+        [6] = "Stop"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = 10000000000000
+    local elementIndex = "BaseDamage"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function InfiniteAKAmmo()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.AK.GunClient
+    local closureName = "EjectShell"
+    local upvalueIndex = 2
+    local closureConstants = {
+        [1] = "ChargeAlterTable",
+        [2] = "BulletShellEnabled",
+        [3] = "ChargedShotAdvanceEnabled",
+        [4] = "ChargeLevel",
+        [5] = 1,
+        [6] = "Level1"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = 100000000000
+    local elementIndex = "Mag"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function DisableRecoilAK()
+
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.AK.GunClient
+    local closureName = "OnHoldingDown"
+    local upvalueIndex = 1
+    local closureConstants = {
+        [1] = "HoldDownEnabled",
+        [2] = "Reloading",
+        [3] = "Overheated",
+        [4] = "ActuallyEquipped",
+        [5] = "Enabled",
+        [6] = "HoldDown"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = false
+    local elementIndex = "CameraRecoilingEnabled"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+function AKFirerate()
+    local aux = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Upbolt/Hydroxide/revision/ohaux.lua"))()
+
+    local scriptPath = game:GetService("Players").LocalPlayer.Backpack.AK.GunClient
+    local closureName = "OnSwitching"
+    local upvalueIndex = 2
+    local closureConstants = {
+        [1] = "Reloading",
+        [2] = "Overheated",
+        [3] = "ActuallyEquipped",
+        [4] = "Enabled",
+        [5] = "Inspecting",
+        [6] = "Switching"
+    }
+
+    local closure = aux.searchClosure(scriptPath, closureName, upvalueIndex, closureConstants)
+    local value = 0.01
+    local elementIndex = "FireRate"
+
+    debug.getupvalue(closure, upvalueIndex)[elementIndex] = value
+end
+
+--MISC
+
+function InjectVirus()
+    for i,v in pairs(game.Workspace.Rooms:GetDescendants()) do
+        if v.Parent.Name == "Human" then
+            if tostring(v.Parent.Parent.Owner.Value) == game.Players.LocalPlayer.Name then
+                local Human = v
+                local TPback = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                wait(0.1)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21.5400715, 4.00000238, 206.451218, -0.199107915, 8.71226258e-10, -0.979977548, 5.94349148e-09, 1, -3.18548077e-10, 0.979977548, -5.88791371e-09, -0.199107915)
+                wait(0.3)
+                fireproximityprompt(game:GetService("Workspace").Viruses.random.rand.ProximityPrompt, 1)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Human.HumanoidRootPart.CFrame * CFrame.new(0,0,3.5)
+                wait(0.2)
+
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Needlegun") then
+                    game.Players.LocalPlayer.Backpack.Needlegun.Parent = game.Players.LocalPlayer.Character
+                    local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                    tool:Activate()
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+                else
+                    local tool = game.Players.LocalPlayer.HumanoidRootPart.Character:FindFirstChildOfClass("Tool")
+                    tool:Activate()
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.CFrame = TPBack
+                end
+            end
+        end
+    end
+end
+
+function GetCoffee()
+    local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-88.9132233, 4.00000334, 196.408691, 0.998212218, -1.82899136e-08, -0.0597692318, 1.25383002e-08, 1, -9.66053548e-08, 0.0597692318, 9.56832409e-08, 0.998212218)
+    game.Players.LocalPlayer.Backpack.Mug.Parent = game.Players.LocalPlayer.Character
+    fireclickdetector(game:GetService("Workspace").CoffeMachine.Button2.ClickDetector)
+    wait(5)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
+end
+function AnnoyTheServer()
+    AnnoyServer = true
+    while AnnoyServer == true do
+        wait(0.1)
+        for i,v in pairs(game.Workspace:GetDescendants()) do
+            if v:IsA("ClickDetector") then
+                fireclickdetector(v)
+            end
+        end
+    end
+end
+function Respawn()
+    game:GetService("ReplicatedStorage").sh2:FireServer()
+end
+function FireTouchInterests()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v:IsA("TouchTransmitter") then
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+        end
+    end
+end
+function FireProximityPrompts()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v.Name == "ProximityPrompt" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
+            wait(0.2)
+            fireproximityprompt(v, 1)
+        end
+    end
+end
+
+--TELEPORT
+function TPBreakRoom()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-98.5587006, 4.00000238, 205.932281, 0.0343985818, 5.75625521e-08, 0.999408185, -5.77208823e-08, 1, -5.56099451e-08, -0.999408185, -5.57738176e-08, 0.0343985818)
+end
+function TPResearchLab()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-13.6448221, 4.00000381, 230.557327, -0.999832511, 1.0779492e-08, 0.0183030944, 1.09274225e-08, 1, 7.98225486e-09, -0.0183030944, 8.18092349e-09, -0.999832511)
+end
+function TPVirusBlock()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-27.2172375, 4.09994745, 204.386887, 0.0266731121, -3.80360987e-08, -0.99964422, 4.09817069e-08, 1, -3.69561377e-08, 0.99964422, -3.99813906e-08, 0.0266731121)
+end
+function TPVirusStorage()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-84.5999985, 4.00000381, 230.978607, -0.998835325, 4.57153035e-08, -0.0482488275, 4.71601567e-08, 1, -2.88075164e-08, 0.0482488275, -3.10493888e-08, -0.998835325)
+end
+function TPCenter()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-54.0430717, 4.10008907, 204.86235, -0.00495845173, -1.08529106e-08, -0.999987721, 1.3860193e-09, 1, -1.08599165e-08, 0.999987721, -1.43985068e-09, -0.00495845173)
+end
+function TPRoad()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.5156746, 4.00000715, 342.933319, 0.999819815, -1.62418701e-09, -0.0189816914, -1.89993143e-11, 1, -8.65667218e-08, 0.0189816914, 8.65514878e-08, 0.999819815)
+end
+function TPControlRoom()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-26.1734848, 4.00000381, 268.555725, -0.0208309535, -3.60727108e-11, -0.999783039, 1.54278881e-11, 1, -3.64019891e-11, 0.999783039, -1.61828276e-11, -0.0208309535)
+end
+function TPFrontDesk()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.6617813, 4.00000238, 255.05159, 0.999743402, 3.68582214e-08, 0.0226513911, -3.54866252e-08, 1, -6.09543491e-08, -0.0226513911, 6.01348873e-08, 0.999743402)
+end
+
+--PLAYER
+function EnableClickTP()
+    -- Ctrl-Click TP
+    -- Useful for getting around, pretending to be sans, etc
+
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end
+
+--VISUAL
+function DestroyGlass()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v.Name == "BreakableGlass" then
+            v:Destroy()
+        end
+    end
+end
+function EnableFullLight()
+    if not _G.FullBrightExecuted then
+
+        _G.FullBrightEnabled = false
+
+        _G.NormalLightingSettings = {
+            Brightness = game:GetService("Lighting").Brightness,
+            ClockTime = game:GetService("Lighting").ClockTime,
+            FogEnd = game:GetService("Lighting").FogEnd,
+            GlobalShadows = game:GetService("Lighting").GlobalShadows,
+            Ambient = game:GetService("Lighting").Ambient
+        }
+
+        game:GetService("Lighting"):GetPropertyChangedSignal("Brightness"):Connect(function()
+            if game:GetService("Lighting").Brightness ~= 1 and game:GetService("Lighting").Brightness ~= _G.NormalLightingSettings.Brightness then
+                _G.NormalLightingSettings.Brightness = game:GetService("Lighting").Brightness
+                if not _G.FullBrightEnabled then
+                    repeat
+                        wait()
+                    until _G.FullBrightEnabled
+                end
+                game:GetService("Lighting").Brightness = 1
+            end
+        end)
+
+        game:GetService("Lighting"):GetPropertyChangedSignal("ClockTime"):Connect(function()
+            if game:GetService("Lighting").ClockTime ~= 12 and game:GetService("Lighting").ClockTime ~= _G.NormalLightingSettings.ClockTime then
+                _G.NormalLightingSettings.ClockTime = game:GetService("Lighting").ClockTime
+                if not _G.FullBrightEnabled then
+                    repeat
+                        wait()
+                    until _G.FullBrightEnabled
+                end
+                game:GetService("Lighting").ClockTime = 12
+            end
+        end)
+
+        game:GetService("Lighting"):GetPropertyChangedSignal("FogEnd"):Connect(function()
+            if game:GetService("Lighting").FogEnd ~= 786543 and game:GetService("Lighting").FogEnd ~= _G.NormalLightingSettings.FogEnd then
+                _G.NormalLightingSettings.FogEnd = game:GetService("Lighting").FogEnd
+                if not _G.FullBrightEnabled then
+                    repeat
+                        wait()
+                    until _G.FullBrightEnabled
+                end
+                game:GetService("Lighting").FogEnd = 786543
+            end
+        end)
+
+        game:GetService("Lighting"):GetPropertyChangedSignal("GlobalShadows"):Connect(function()
+            if game:GetService("Lighting").GlobalShadows ~= false and game:GetService("Lighting").GlobalShadows ~= _G.NormalLightingSettings.GlobalShadows then
+                _G.NormalLightingSettings.GlobalShadows = game:GetService("Lighting").GlobalShadows
+                if not _G.FullBrightEnabled then
+                    repeat
+                        wait()
+                    until _G.FullBrightEnabled
+                end
+                game:GetService("Lighting").GlobalShadows = false
+            end
+        end)
+
+        game:GetService("Lighting"):GetPropertyChangedSignal("Ambient"):Connect(function()
+            if game:GetService("Lighting").Ambient ~= Color3.fromRGB(178, 178, 178) and game:GetService("Lighting").Ambient ~= _G.NormalLightingSettings.Ambient then
+                _G.NormalLightingSettings.Ambient = game:GetService("Lighting").Ambient
+                if not _G.FullBrightEnabled then
+                    repeat
+                        wait()
+                    until _G.FullBrightEnabled
+                end
+                game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+            end
+        end)
+
+        game:GetService("Lighting").Brightness = 1
+        game:GetService("Lighting").ClockTime = 12
+        game:GetService("Lighting").FogEnd = 786543
+        game:GetService("Lighting").GlobalShadows = false
+        game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+
+        local LatestValue = true
+        spawn(function()
+            repeat
+                wait()
+            until _G.FullBrightEnabled
+            while wait() do
+                if _G.FullBrightEnabled ~= LatestValue then
+                    if not _G.FullBrightEnabled then
+                        game:GetService("Lighting").Brightness = _G.NormalLightingSettings.Brightness
+                        game:GetService("Lighting").ClockTime = _G.NormalLightingSettings.ClockTime
+                        game:GetService("Lighting").FogEnd = _G.NormalLightingSettings.FogEnd
+                        game:GetService("Lighting").GlobalShadows = _G.NormalLightingSettings.GlobalShadows
+                        game:GetService("Lighting").Ambient = _G.NormalLightingSettings.Ambient
+                    else
+                        game:GetService("Lighting").Brightness = 1
+                        game:GetService("Lighting").ClockTime = 12
+                        game:GetService("Lighting").FogEnd = 786543
+                        game:GetService("Lighting").GlobalShadows = false
+                        game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                    end
+                    LatestValue = not LatestValue
+                end
+            end
+        end)
+    end
+
+    _G.FullBrightExecuted = true
+    _G.FullBrightEnabled = not _G.FullBrightEnabled
+end
+
+--Tabs
+local GunModTab = Window:NewTab("Gun Mods")
+local MiscTab = Window:NewTab("Misc")
+local TeleportTab = Window:NewTab("Teleports")
+local VisualTab = Window:NewTab("Visuals")
+local PlayerTab = Window:NewTab("Player")
+
+--Sections
+local USPSection = GunModTab:NewSection("USP (UNEQUIP GUN BEFORE USING BUTTONS)")
+local AKSection = GunModTab:NewSection("AK47 (UNEQUIP GUN BEFORE USING BUTTONS)")
+local MiscSection = MiscTab:NewSection("Misc")
+local FiringSection = MiscTab:NewSection("Firing stuff")
+local TeleportSection = TeleportTab:NewSection("Teleports")
+local VisualSection = VisualTab:NewSection("Visuals")
+local PlayerSection = PlayerTab:NewSection("Player")
+
+--USP contents
+USPSection:NewButton("Grab USP", "Grabs the USP", function()
+    GrabPistol()
+end)
+USPSection:NewButton("Infinite USP ammo", "Gives infinite USP ammo", function()
+    InfinitePistolAmmo()
+end)
+
+--AK contents
+AKSection:NewButton("Grab AK", "Grabs the AK", function()
+    GrabAK()
+end)
+AKSection:NewButton("Infinite AK ammo", "Gives infinite Ak ammo", function()
+    InfiniteAKAmmo()
+end)
+
+--Misc contents
+MiscSection:NewButton("inject human (NEED SPAWNED HUMAN)", "injects your human with a virus", function()
+    InjectVirus()
+end)
+MiscSection:NewButton("Get some coffee", "get some coffee :)", function()
+    GetCoffee()
+end)
+MiscSection:NewButton("Respawn", "You respawn when press this", function()
+    Respawn()
+end)
+
+--Firing
+FiringSection:NewToggle("Annoy Server (FIRES CLICK DETECTORS)", "Annoys the fuck out of the server!", function(state)
+    if state then
+        AnnoyTheServer()
+    else
+        AnnoyServer = false
+    end
+end)
+FiringSection:NewButton("Fire touch interests", "Fires all touch interests", function()
+    FireTouchInterests()
+end)
+FiringSection:NewButton("Fire proximity prompts", "Fires all proximity prompts", function()
+    FireProximityPrompts()
+end)
+
+--Teleport contents
+TeleportSection:NewButton("Break Room", "Teleports you to the break room", function()
+    TPBreakRoom()
+end)
+TeleportSection:NewButton("Research Lab", "Teleports you to the research lab", function()
+    TPResearchLab()
+end)
+TeleportSection:NewButton("Virus Block", "Teleports you to the virus block", function()
+    TPVirusBlock()
+end)
+TeleportSection:NewButton("Virus Storage", "Teleports you to the virus storage room", function()
+    TPVirusStorage()
+end)
+TeleportSection:NewButton("Center", "Teleports you to the center", function()
+    TPCenter()
+end)
+TeleportSection:NewButton("Road", "Teleports you to the middle of the road", function()
+    TPRoad()
+end)
+TeleportSection:NewButton("Control Room", "Teleports you to the control room", function()
+    TPControlRoom()
+end)
+TeleportSection:NewButton("Front Desk", "Teleports you to the Front Desk", function()
+    TPFrontDesk()
+end)
+
+--Player contents
+PlayerSection:NewButton("Ctrl-Click TP", "Enables Ctrl-Click TP", function()
+    EnableClickTP()
+end)
+PlayerSection:NewSlider("WalkSpeed", "SliderInfo", 200, 16, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("Hip Height", "SliderInfo", 10, 0, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+--Visual contents
+VisualSection:NewButton("Destroy Glass", "Destroys all room glass", function()
+    DestroyGlass()
+end)
+VisualSection:NewButton("Full Light", "Enables full light", function()
+    EnableFullLight()
+end)
