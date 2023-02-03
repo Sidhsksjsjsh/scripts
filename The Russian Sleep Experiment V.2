@@ -2,7 +2,6 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Russian Sleep Experiment V.2", "Ocean")
 
 --Variables
-AnnoyServer = true
 
 --Functions
 
@@ -251,7 +250,6 @@ function InjectVirus()
         end
     end
 end
-
 function GetCoffee()
     local TPBack = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-88.9132233, 4.00000334, 196.408691, 0.998212218, -1.82899136e-08, -0.0597692318, 1.25383002e-08, 1, -9.66053548e-08, 0.0597692318, 9.56832409e-08, 0.998212218)
@@ -261,14 +259,28 @@ function GetCoffee()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = TPBack
 end
 function AnnoyTheServer()
-    AnnoyServer = true
-    while AnnoyServer == true do
-        wait(0.1)
-        for i,v in pairs(game.Workspace:GetDescendants()) do
-            if v:IsA("ClickDetector") then
-                fireclickdetector(v)
-            end
-        end
+    while wait(0.01) do
+        local ohString1 = "PlayAudio"
+        local ohTable2 = {
+            ["Echo"] = true,
+            ["DistantSoundVolume"] = 1.5,
+            ["Origin"] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+            ["Instance"] = game:GetService("Players").LocalPlayer.Backpack.USP.Handle["1"].FireSounds.FireSound,
+            ["DistantSoundIds"] = {
+                [1] = 177174605
+            },
+            ["Silenced"] = false
+        }
+        local ohTable3 = {
+            ["AmmoPerMag"] = 12,
+            ["RaisePitch"] = true,
+            ["Origin"] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+            ["Instance"] = game:GetService("Players").LocalPlayer.Backpack.USP.Handle["1"].LowAmmoSound,
+            ["CurrentAmmo"] = 100000000000000000000
+        }
+        local ohBoolean4 = true
+
+        game:GetService("ReplicatedStorage").Events.gunEvent:Fire(ohString1, ohTable2, ohTable3, ohBoolean4)
     end
 end
 function Respawn()
@@ -289,6 +301,13 @@ function FireProximityPrompts()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame
             wait(0.2)
             fireproximityprompt(v, 1)
+        end
+    end
+end
+function FireClickDetectors()
+    for i,v in pairs(game.Workspace:GetDescendants()) do
+        if v:IsA("ClickDetector") then
+            fireclickdetector(v)
         end
     end
 end
@@ -484,8 +503,11 @@ AKSection:NewButton("Infinite AK ammo", "Gives infinite Ak ammo", function()
 end)
 
 --Misc contents
-MiscSection:NewButton("inject human (NEED SPAWNED HUMAN)", "injects your human with a virus", function()
+MiscSection:NewButton("Inject Human (NEED SPAWNED HUMAN)", "injects your human with a virus", function()
     InjectVirus()
+end)
+MiscSection:NewButton("Annoy server (REQUIRE USP)", "Unequip usp and press button to use", function()
+    AnnoyTheServer()
 end)
 MiscSection:NewButton("Get some coffee", "get some coffee :)", function()
     GetCoffee()
@@ -494,19 +516,13 @@ MiscSection:NewButton("Respawn", "You respawn when press this", function()
     Respawn()
 end)
 
+
 --Firing
-FiringSection:NewToggle("Annoy Server (FIRES CLICK DETECTORS)", "Annoys the fuck out of the server!", function(state)
-    if state then
-        AnnoyTheServer()
-    else
-        AnnoyServer = false
-    end
-end)
 FiringSection:NewButton("Fire touch interests", "Fires all touch interests", function()
     FireTouchInterests()
 end)
-FiringSection:NewButton("Fire proximity prompts", "Fires all proximity prompts", function()
-    FireProximityPrompts()
+FiringSection:NewButton("Fire click detectors", "Fires all click detectors", function()
+    FireClickDetectors()
 end)
 
 --Teleport contents
