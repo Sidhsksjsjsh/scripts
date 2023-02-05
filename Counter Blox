@@ -1,0 +1,37 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local w = library:CreateWindow("Counter Blox")
+local b = w:CreateFolder("ESP - Head Size")
+
+b:Slider("Head Size",{
+    min = 1.75;
+    max = 10; --The max head size
+    precise = true;
+},function(value)
+
+for i,v in pairs(game.Players:GetChildren()) do
+     if v ~= game.Players.LocalPlayer then
+        if tostring(v.Status.Team.Value) ~= tostring(game.Players.LocalPlayer.Status.Team.Value) then
+            if v.Character then
+                local HeadHB = v.Character.HeadHB
+                HeadHB.Transparency = 0
+                HeadHB.Size = Vector3.new(value, value, value)
+                end
+            end
+        end
+    end
+end)
+
+b:Button("ESP",function()
+    local Esp = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Simple%20ESP"))()
+Esp.Box = true
+Esp.BoxColor = Color3.fromRGB(255,255,255)
+Esp.BoxOutline = true
+Esp.BoxOutlineColor = Color3.fromRGB(0,0,0)
+Esp.HealthBar = true
+Esp.HealthBarSide = "Left"
+Esp.Names = true
+Esp.NamesColor = Color3.fromRGB(255,255,255)
+Esp.NamesOutline = true
+Esp.NamesFont = 2
+Esp.NamesSize = 13
+end)
