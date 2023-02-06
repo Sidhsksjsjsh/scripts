@@ -1,0 +1,30 @@
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local w = library:CreateWindow("A")
+local m = w:CreateFolder("Main")
+local t = w:CreateFolder("Teleports")
+local p = w:CreateFolder("Player")
+local mc = w:CreateFolder("Misc")
+
+
+b:Button("Button",function()
+    print("Elym Winning")
+end)
+
+b:Toggle("Toggle",function(bool)
+    shared.toggle = bool
+    print(shared.toggle)
+end)
+
+b:Slider("Slider",{
+    min = 10; -- min value of the slider
+    max = 50; -- max value of the slider
+    precise = true; -- max 2 decimals
+},function(value)
+    print(value)
+end)
+
+b:Dropdown("Dropdown",{"A","B","C"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+    print(mob)
+end)
+
