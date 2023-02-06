@@ -1,0 +1,80 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Kavo Preset", "Ocean")
+
+--Tabs
+local Main = Window:NewTab("Main")
+local Player = Window:NewTab("Player")
+local Visuals = Window:NewTab("Visuals")
+local Misc = Window:NewTab("Misc")
+
+--Sections
+local MainSection = Tab:NewSection("Main")
+local PlayerSection = Tab:NewSection("Player")
+local VisualsSection = Tab:NewSection("Visuals")
+local MiscSection = Tab:NewSection("Misc")
+
+----------------------------------------------------
+
+--MAIN FUNCTIONS
+
+
+--PLAYER FUNCTIONS
+function EnableClickTp()
+local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse()
+
+Mouse.Button1Down:connect(function()
+if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+if not Mouse.Target then return end
+Plr.Character:MoveTo(Mouse.Hit.p)
+end)
+end
+
+--VISUAL FUNCTIONS
+function FullLight()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light",true))()
+end
+
+--MISC FUNCTIONS
+function AntiAFK()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK",true))()
+end
+function SpyChat()
+    loadstring(game:HttpGet("https://github.com/CosmoCircle/scripts/blob/main/Spy_Chat",true))()
+end
+-----------------------------------------------------
+
+--Main contents
+
+
+--Player contents
+PlayerSection:NewButton("CTRL-Click TP", "Enable ctrl click tp", function()
+    EnableClickTp()
+end)
+PlayerSection:NewSlider("Walk Speed", "Slide your walkspeed", 250, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("Jump Power", "Slide your jump power", 350, 50, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    game.Players.LocalPlayer.Character.HUmanoid.UseJumpPower = true
+end)
+PlayerSection:NewSlider("Hip Height", "Slide your hip height", 150, 0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+--Visuals contents
+VisualSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
+    FullLight()
+end)
+
+--Misc contents
+MiscSection:NewButton("Anti-AFK", "When you are afk, you wont be kicked.", function()
+    FullLight()
+end)
+MiscSection:NewButton("Perspective watcher", "Switch to other players camera", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+end)
+MiscSection:NewButton("Spy Chat", "See messages that are whispered", function()
+    SpyChat()
+end)
+
