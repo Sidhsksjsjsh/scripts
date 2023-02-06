@@ -74,10 +74,10 @@ v:Button("Full Light",function()
 end)
 
 --Misc contents
-v:Button("Anti-AFK",function()
+mc:Button("Anti-AFK",function()
     AntiAFK()
 end)
-v:Button("Perspective Watcher",function()
+mc:Button("Perspective Watcher",function()
     PWatcher()
 end)
 
