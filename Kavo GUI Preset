@@ -2,21 +2,25 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Kavo Preset", "Ocean")
 
 --Tabs
-local Main = Window:NewTab("Main")
-local Player = Window:NewTab("Player")
-local Visuals = Window:NewTab("Visuals")
-local Misc = Window:NewTab("Misc")
+local MainTab = Window:NewTab("Main")
+local PlayerTab = Window:NewTab("Player")
+local VisualsTab = Window:NewTab("Visuals")
+local MiscTab = Window:NewTab("Misc")
 
 --Sections
-local MainSection = Tab:NewSection("Main")
-local PlayerSection = Tab:NewSection("Player")
-local VisualsSection = Tab:NewSection("Visuals")
-local MiscSection = Tab:NewSection("Misc")
+local MainSection = MainTab:NewSection("Main")
+local PlayerSection = PlayerTab:NewSection("Player")
+local VisualsSection = VisualsTab:NewSection("Visuals")
+local MiscSection = MiscTab:NewSection("Misc")
+
+----------------------------------------------------
+
+--Variables
+
 
 ----------------------------------------------------
 
 --MAIN FUNCTIONS
-
 
 --PLAYER FUNCTIONS
 function EnableClickTp()
@@ -46,7 +50,6 @@ end
 
 --Main contents
 
-
 --Player contents
 PlayerSection:NewButton("CTRL-Click TP", "Enable ctrl click tp", function()
     EnableClickTp()
@@ -63,7 +66,7 @@ PlayerSection:NewSlider("Hip Height", "Slide your hip height", 150, 0, function(
 end)
 
 --Visuals contents
-VisualSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
+VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
     FullLight()
 end)
 
@@ -77,4 +80,3 @@ end)
 MiscSection:NewButton("Spy Chat", "See messages that are whispered", function()
     SpyChat()
 end)
-
