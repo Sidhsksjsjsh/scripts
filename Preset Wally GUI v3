@@ -5,12 +5,11 @@ local p = w:CreateFolder("Player")
 local v = w:CreateFolder("Visual")
 local mc = w:CreateFolder("Misc")
 
-----------------------------------------------------
 
---MAIN FUNCTIONS
+--// Main Functions \\--
 
 
---PLAYER FUNCTIONS
+--// Player Functions \\--
 function EnableClickTp()
     local Plr = game:GetService("Players").LocalPlayer
     local Mouse = Plr:GetMouse()
@@ -22,26 +21,28 @@ function EnableClickTp()
     end)
     end
     
---VISUAL FUNCTIONS
-    function FullLight()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light",true))()
-    end
+--// Visual Functions \\--
+function FullLight()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light",true))()
+end
     
---MISC FUNCTIONS
-    function AntiAFK()
+--// Misc Functions \\--
+function AntiAFK()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK",true))()
     end
-    function PWatcher()
+function PWatcher()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
     end
-    function SpyChat()
+function SpyChat()
         loadstring(game:HttpGet("https://github.com/CosmoCircle/scripts/blob/main/Spy_Chat",true))()
     end
------------------------------------------------------
 
---Main contents
 
---Player contents
+
+--// Main Contents \\--
+
+
+--// Player Contents \\--
 p:Button("CTRL-CLICK TP",function()
     EnableClickTp()
 end)
@@ -53,12 +54,12 @@ p:Slider("Walkspeed",{
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
 end)
 
---Visual contents
+--// Visual Contents \\--
 v:Button("Full Light",function()
     FullLight()
 end)
 
---Misc contents
+--// Misc Contents \\--
 mc:Button("Anti-AFK",function()
     AntiAFK()
 end)
