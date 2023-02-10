@@ -1,0 +1,82 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local w = library:CreateWindow("Victory Race")
+local m = w:CreateFolder("Main")
+local p = w:CreateFolder("Player")
+local v = w:CreateFolder("Visual")
+local mc = w:CreateFolder("Misc")
+
+----------------------------------------------------
+
+--MAIN FUNCTIONS
+function AutoWins()
+for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v:IsA("TouchTransmitter") and v.Parent.Name == "Win"then
+        local Touch = v
+        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, Touch.Parent, 0) --0 is touch
+        wait()
+        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, Touch.Parent, 1) -- 1 is untouch
+    end
+end
+
+end
+
+--PLAYER FUNCTIONS
+function EnableClickTp()
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+    
+    Mouse.Button1Down:connect(function()
+    if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+    if not Mouse.Target then return end
+    Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+    end
+    
+--VISUAL FUNCTIONS
+    function FullLight()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light",true))()
+    end
+    
+--MISC FUNCTIONS
+    function AntiAFK()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK",true))()
+    end
+    function PWatcher()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+    end
+    function SpyChat()
+        loadstring(game:HttpGet("https://github.com/CosmoCircle/scripts/blob/main/Spy_Chat",true))()
+    end
+-----------------------------------------------------
+
+--Main contents
+m:Button("Auto Wins",function()
+    AutoWins()
+end)
+--Player contents
+p:Button("CTRL-CLICK TP",function()
+    EnableClickTp()
+end)
+p:Slider("Walkspeed",{
+    min = 16;
+    max = 250;
+    precise = true;
+},function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+--Visual contents
+v:Button("Full Light",function()
+    FullLight()
+end)
+
+--Misc contents 
+mc:Button("Anti-AFK",function()
+    AntiAFK()
+end)
+mc:Button("Player Watcher",function()
+    PWatcher()
+end)
+mc:Button("Spy Chat",function()
+    SpyChat()
+end)
