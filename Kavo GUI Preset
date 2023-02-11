@@ -1,4 +1,4 @@
---// Services \\--
+--// Variables \\--
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
@@ -46,9 +46,8 @@ end
 function AntiAFK()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK", true))()
 end
-
-function SpyChat()
-  loadstring(game:HttpGet("https://github.com/CosmoCircle/scripts/blob/main/Spy_Chat", true))()
+function PerspectWatch()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
 end
 
 
@@ -69,10 +68,6 @@ PlayerSection:NewSlider("Jump Power", "Slide your jump power", 350, 50, function
   Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 end)
 
-PlayerSection:NewSlider("Hip Height", "Slide your hip height", 150, 0, function(s)
-  Players.LocalPlayer.Character.Humanoid.HipHeight = s
-end)
-
 
 --// Visual Contents \\--
 VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
@@ -86,7 +81,7 @@ MiscSection:NewButton("Anti-AFK", "When you are afk, you won't be kicked.", func
 end)
 
 MiscSection:NewButton("Perspective Watcher", "Switch to other players camera", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+    PerspectWatch()
 end)
 MiscSection:NewButton("Spy Chat", "See messages that are whispered", function()
     SpyChat()
