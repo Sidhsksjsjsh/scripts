@@ -109,10 +109,6 @@ end)
 
 
 --// Player Contents \\--
-PlayerSection:NewButton("CTRL-Click TP", "Enable ctrl click tp", function()
-    EnableClickTp()
-end)
-
 PlayerSection:NewSlider("Walk Speed", "Slide your walkspeed", 250, 16, function(s)
     Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
