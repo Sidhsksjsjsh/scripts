@@ -1,10 +1,3 @@
---Destroys anti cheat walls :)
-for i,v in pairs(game.Workspace.Waves:GetDescendants()) do
-if v.Name == "Cheat" then
-v:Destroy()
-    end
-end
-
 --// Variables \\--
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -36,14 +29,14 @@ local MiscSection = MiscTab:NewSection("Misc")
 function Damage()
     for i,v in pairs(game.Workspace.Waves:GetDescendants()) do
         if v.Name == "HumanoidRootPart" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,0,5)
-            wait(0.1)
-            for i = 1,100 do
-                game:GetService("ReplicatedStorage").Remote.Weapon.TakeDamage:FireServer()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,0,1)
+                    wait(0.1)
+                    for i = 1,100 do
+                    game:GetService("ReplicatedStorage").Remote.Weapon.TakeDamage:FireServer()
+                end
             end
         end
     end
-end
 
 --// Player Functions \\--
 function EnableClickTp()
@@ -85,7 +78,7 @@ MainSection:NewToggle("Autofarm Waves", "Automatically kill wave mobs", function
     end
 end)
 
-MainSection:NewDropdown("Auto Egg", "DropdownInf", {"No egg", "1", "2", "3"}, function(currentOption)
+MainSection:NewDropdown("Auto Egg", "DropdownInf", {"No egg", "1", "2", "3", "4", "5"}, function(currentOption)
     if currentOption == "No egg" then
         AutoEgg = false
     else
@@ -134,7 +127,6 @@ end)
 VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
     FullLight()
 end)
-
 
 --// Misc Contents \\--
 MiscSection:NewButton("Anti-AFK", "When you are afk, you won't be kicked.", function()
