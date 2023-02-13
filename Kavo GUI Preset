@@ -37,10 +37,12 @@ function EnableClickTp()
   end)
 end
 
+
 --// Visual Functions \\--
 function FullLight()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light", true))()
 end
+
 
 --// Misc Functions \\--
 function AntiAFK()
@@ -82,7 +84,4 @@ end)
 
 MiscSection:NewButton("Perspective Watcher", "Switch to other players camera", function()
     PerspectWatch()
-end)
-MiscSection:NewButton("Spy Chat", "See messages that are whispered", function()
-    SpyChat()
 end)
