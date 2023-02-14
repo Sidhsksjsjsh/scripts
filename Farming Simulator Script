@@ -1,0 +1,151 @@
+--// Variables \\--
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local AutoSell = true
+local AutoBackpack = true
+local AutoPower = true
+local AutoRange = true
+local AutoSpeed = true
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Farming Simulator! 🌾 👩", "GrapeTheme")
+
+
+--// Tabs \\--
+local MainTab = Window:NewTab("Upgrade/Main")
+local VisualsTab = Window:NewTab("Visual/Sound")
+local EggTab = Window:NewTab("Eggs")
+local MiscTab = Window:NewTab("Misc")
+
+
+--// Sections \\--
+local MainSection = MainTab:NewSection("Upgrade/Main")
+local VisualsSection = VisualsTab:NewSection("Visual/Sound")
+local EggSection = EggTab:NewSection("Eggs")
+local MiscSection = MiscTab:NewSection("Misc")
+
+--// Player Functions \\--
+function EnableClickTp()
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end
+
+
+--// Visual Functions \\--
+function FullLight()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light", true))()
+end
+
+
+--// Misc Functions \\--
+function AntiAFK()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK", true))()
+end
+
+
+--// Upgrade/Main Contents \\--
+MainSection:NewToggle("Auto Sell", "Automatically sell crops", function(state)
+    if state then
+        AutoSell = true
+        if AutoSell == true then
+            while AutoSell == true do
+                wait(0.5)
+                game:GetService("ReplicatedStorage").Events.SellBlocks:FireServer()
+            end
+        end
+    else
+        AutoSell = false
+    end
+end)
+MainSection:NewToggle("Auto Upgrade Backpack", "Automatically upgrade backpack", function(state)
+    if state then
+        AutoBackpack = true
+        if AutoBackpack == true then
+            while AutoBackpack == true do
+                wait(0.5)
+                local ohString1 = "BackpackSize"
+                game:GetService("ReplicatedStorage").Events.PlayerUpgradeAxe:FireServer(ohString1)
+            end
+        end
+    else
+        AutoBackpack = false
+    end
+end)
+MainSection:NewToggle("Auto Upgrade Power", "Automatically upgrade power", function(state)
+    if state then
+        AutoPower = true
+        if AutoPower == true then
+            while AutoPower == true do
+                wait(0.5)
+                local ohString1 = "TractorPower"
+                game:GetService("ReplicatedStorage").Events.PlayerUpgradeAxe:FireServer(ohString1)
+            end
+        end
+    else
+        AutoPower = false
+    end
+end)
+MainSection:NewToggle("Auto Upgrade Range", "Automatically upgrade range", function(state)
+    if state then
+        AutoRange = true
+        if AutoRange == true then
+            while AutoRange == true do
+                wait(0.5)
+                local ohString1 = "HarvestRange"
+                game:GetService("ReplicatedStorage").Events.PlayerUpgradeAxe:FireServer(ohString1)
+            end
+        end
+    else
+        AutoRange = false
+    end
+end)
+MainSection:NewToggle("Auto Upgrade Speed", "Automatically upgrade speed", function(state)
+    if state then
+        AutoPower = true
+        if AutoPower == true then
+            while AutoPower == true do
+                wait(0.5)
+                local ohString1 = "TractorPower"
+                game:GetService("ReplicatedStorage").Events.PlayerUpgradeAxe:FireServer(ohString1)
+            end
+        end
+    else
+        AutoPower = false
+    end
+end)
+
+
+--// Egg Contents \\--
+EggSection:NewDropdown("Auto Open Egg", "Automatically open egg of choice", {"None", "1", "2", "3"}, function(currentOption)
+    while wait(0.01) do
+        local ohString1 = currentOption
+        game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer(ohString1)
+    end
+end)
+
+
+--// Visual/Sound Contents \\--
+VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
+    FullLight()
+end)
+VisualsSection:NewButton("Disable Popups", "Disables pop ups", function()
+    while wait(0.01) do
+        game:GetService("Players").LocalPlayer.PlayerGui.CoinGem.Enabled = false
+        game:GetService("SoundService").CoinCollect.Volume = 0
+        game:GetService("Players").LocalPlayer.PlayerGui.PetsPopup.Enabled = false
+    end
+end)
+
+
+--// Misc Contents \\--
+MiscSection:NewButton("Anti-AFK", "When you are afk, you won't be kicked.", function()
+    AntiAFK()
+end)
