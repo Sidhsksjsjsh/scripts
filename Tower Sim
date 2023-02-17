@@ -1,0 +1,122 @@
+--// Variables \\--
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local AutoBuild = true
+local AutoUpgradeBricks = true
+local PlayerTower = function()
+    for i,v in pairs(game.Workspace:GetChildren()) do
+        if v:FindFirstChild("Owner") then
+            if tostring(v.Owner.Value) == game.Players.LocalPlayer.Name then
+                return v
+            end
+        end
+    end
+end
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Tower Simulator [MARS UPDATE]", "Ocean")
+
+
+--// Tabs \\--
+local MainTab = Window:NewTab("Main")
+local PlayerTab = Window:NewTab("Player")
+local VisualsTab = Window:NewTab("Visuals")
+local MiscTab = Window:NewTab("Misc")
+
+
+--// Sections \\--
+local MainSection = MainTab:NewSection("Main")
+local PlayerSection = PlayerTab:NewSection("Player")
+local VisualsSection = VisualsTab:NewSection("Visuals")
+local MiscSection = MiscTab:NewSection("Misc")
+
+
+--// Main Functions \\--
+
+
+--// Player Functions \\--
+function EnableClickTp()
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+
+    Mouse.Button1Down:connect(function()
+        if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+        if not Mouse.Target then return end
+        Plr.Character:MoveTo(Mouse.Hit.p)
+    end)
+end
+
+
+--// Visual Functions \\--
+function FullLight()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Full%20Light", true))()
+end
+
+
+--// Misc Functions \\--
+function AntiAFK()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CosmoCircle/scripts/main/Anti%20AFK", true))()
+end
+function PerspectWatch()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Gravity-0/CCAMERAv4.0/mainB/CCAMv5.0.lua'))()
+end
+
+
+--// Main Contents \\--
+MainSection:NewToggle("Auto Build", "Automatically build your tower", function(state)
+    if state then
+        AutoBuild = true
+        while AutoBuild == true do
+            task.wait(0.01)
+            fireclickdetector(PlayerTower().ClickDetector)
+        end
+    else
+        AutoBuild = false
+    end
+end)
+
+MainSection:NewToggle("Auto Upgrade Bricks", "Automatically upgrade bricks per second", function(state)
+    if state then
+        AutoUpgradeBricks = true
+        while AutoUpgradeBricks == true do
+            task.wait(0.01)
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, PlayerTower().PurchaseUpgradeButtonRight.Head, 1)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, PlayerTower().PurchaseUpgradeButtonRight.Head, 0)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, PlayerTower().PurchaseUpgradeButtonLeft.Head, 1)
+            wait()
+            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, PlayerTower().PurchaseUpgradeButtonLeft.Head, 0)
+        end
+    else
+        AutoUpgradeBricks = false
+    end
+end)
+
+--// Player Contents \\--
+PlayerSection:NewButton("CTRL-Click TP", "Enable ctrl click tp", function()
+    EnableClickTp()
+end)
+
+PlayerSection:NewSlider("Jump Power", "Slide your jump power", 350, 50, function(s)
+    Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
+end)
+
+
+--// Visual Contents \\--
+VisualsSection:NewButton("Full Light", "Reset lighting for more fps/to see better", function()
+    FullLight()
+end)
+
+
+--// Misc Contents \\--
+MiscSection:NewButton("Anti-AFK", "When you are afk, you won't be kicked.", function()
+    AntiAFK()
+end)
+
+MiscSection:NewButton("Perspective Watcher", "Switch to other players camera", function()
+    PerspectWatch()
+end)
